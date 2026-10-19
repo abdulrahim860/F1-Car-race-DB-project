@@ -1,0 +1,46 @@
+resources:
+  jobs:
+    job_formula1_incremental_batch_orchestration:
+      name: job_formula1_incremental_batch_orchestration
+      tasks:
+        - task_key: 01_identify_next_batches
+          notebook_task:
+            notebook_path: /Workspace/Users/abdulrahim82436@gmail.com/databricks-course/formula1-project-incremental-load/06-orchestration/01.Identify
+              next batch
+            source: WORKSPACE
+        - task_key: is_there_a_batch_to_process
+          depends_on:
+            - task_key: 01_identify_next_batches
+          condition_task:
+            op: EQUAL_TO
+            left: "{{tasks.01_identify_next_batches.values.has_batch}}"
+            right: "true"
+        - task_key: 02_create_new_batch
+          depends_on:
+            - task_key: is_there_a_batch_to_process
+              outcome: "true"
+          notebook_task:
+            notebook_path: /Workspace/Users/abdulrahim82436@gmail.com/databricks-course/formula1-project-incremental-load/06-orchestration/02.Create
+              new batch
+            base_parameters:
+              p_batch_id: "{{tasks.01_identify_next_batches.values.p_batch_id}}"
+            source: WORKSPACE
+        - task_key: run_job_formula1_lakehouse_incremental_refresh
+          depends_on:
+            - task_key: 02_create_new_batch
+          run_job_task:
+            job_id: 470671551276132
+            job_parameters:
+              p_batch_id: "{{tasks.01_identify_next_batches.values.p_batch_id}}"
+        - task_key: 03_complete_batch
+          depends_on:
+            - task_key: run_job_formula1_lakehouse_incremental_refresh
+          notebook_task:
+            notebook_path: /Workspace/Users/abdulrahim82436@gmail.com/databricks-course/formula1-project-incremental-load/06-orchestration/03.Complete
+              batch
+            base_parameters:
+              p_batch_id: "{{tasks.01_identify_next_batches.values.p_batch_id}}"
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
