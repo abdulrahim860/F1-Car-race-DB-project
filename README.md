@@ -104,7 +104,7 @@ F1-Car-race-DB-project/
 
 The project follows a layered architecture:
 
-![Azure Databricks Solution Architecture](asset/architecture diagram.png)
+![Azure Databricks Solution Architecture](asset/architecture_diagram.png)
 
 ### 1. Common utilities
 The `00-common` folder contains configuration and helper functions reused by every notebook.
@@ -292,7 +292,7 @@ This repo includes Databricks job definitions to run the pipeline end-to-end in 
 
 ## 🗂️ Entity relationship diagram 
 
-![Entity relationship diagram ](asset/ER diagram.png)
+![Entity relationship diagram ](asset/ER_diagram.png)
 
 --- 
 
