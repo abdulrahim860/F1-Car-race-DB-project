@@ -5,7 +5,7 @@
 - [🏎️ Project overview](#️-project-overview)
 - [📂 Project structure](#-project-structure)
 - [🏗️ Architecture and data flow](#️-architecture-and-data-flow)
-- [🗂️ Entity relationship diagram](#-entity_relationship_diagram)
+- [🗂️ Entity relationship diagram](#-entity-relationship-diagram)
 - [🗃️ Data model and analytics focus](#️-data-model-and-analytics-focus)
 - [▶️ Typical workflow to run the project](#️-typical-workflow-to-run-the-project)
 - [📋 Prerequisites](#-prerequisites)
