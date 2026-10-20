@@ -5,6 +5,7 @@
 - [🏎️ Project overview](#️-project-overview)
 - [📂 Project structure](#-project-structure)
 - [🏗️ Architecture and data flow](#️-architecture-and-data-flow)
+- [🗂️ Entity relationship diagram](#-entity_relationship_diagram)
 - [🗃️ Data model and analytics focus](#️-data-model-and-analytics-focus)
 - [▶️ Typical workflow to run the project](#️-typical-workflow-to-run-the-project)
 - [📋 Prerequisites](#-prerequisites)
@@ -92,6 +93,8 @@ F1-Car-race-DB-project/
 ├── 08-pipeline/
 │   ├── formula1_lakehouse_incremental_refresh.yaml
 │   └──job_formula1_incrmental_batch_orchestration.yaml
+├── dataset/
+│   └── formula1-incremental-load-landing/  # contain raw dataset
 └── README.md
 ```
 
@@ -100,6 +103,8 @@ F1-Car-race-DB-project/
 ## 🏗️ Architecture and data flow
 
 The project follows a layered architecture:
+
+![Azure Databricks Solution Architecture](asset/architecture diagram.png)
 
 ### 1. Common utilities
 The `00-common` folder contains configuration and helper functions reused by every notebook.
@@ -284,6 +289,12 @@ This repo includes Databricks job definitions to run the pipeline end-to-end in 
   - `03_complete_batch` — marks the batch complete.
 
 ---
+
+## 🗂️ Entity relationship diagram 
+
+![Entity relationship diagram ](asset/ER diagram.png)
+
+--- 
 
 ## 🗃️ Data model and analytics focus
 
